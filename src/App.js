@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer } from 'react';
 import './App.css';
 import InputNumber from './components/forms/InputNumber';
 import Heading from './components/headers/Heading';
+import Reducer from './reducers/Reducer';
+
+const initialState = {
+  targetAmount: 0,
+  initialAmount: 0,
+  progressAmount: 0
+}
 
 function App() {
-  const [targetAmount, setTargetAmount] = useState(0);
-  const [initialAmount, setInitialAmount] = useState(0);
-  const [progressAmount, setProgressAmount] = useState(0);
-
-  useEffect(() => {
-    setProgressAmount(targetAmount - initialAmount);
-  }, [targetAmount, initialAmount]);
+  const [state, dispatch] = useReducer(Reducer, initialState);
 
   return (
     <div className="App">
@@ -19,18 +20,24 @@ function App() {
       <InputNumber
         name="initialAmount"
         label="Initial Amount"
-        value={initialAmount}
-        onChange={e => setInitialAmount(e.target.value)}
+        value={state.initialAmount || '' }
+        onChange={e => dispatch({
+          type: 'initialAmountChange',
+          payload: parseInt(e.target.value)
+        })}
       />
 
       <InputNumber
         name="targetAmount"
         label="Target Amount"
-        value={targetAmount}
-        onChange={e => setTargetAmount(e.target.value)}
+        value={state.targetAmount || '' }
+        onChange={e => dispatch({
+          type: 'targetAmountChange',
+          payload: parseInt(e.target.value)
+        })}
       />
 
-      Amount remaining: {progressAmount}
+      Amount remaining: {state.progressAmount}
 
     </div>
   );
