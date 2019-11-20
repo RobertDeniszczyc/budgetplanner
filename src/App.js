@@ -3,6 +3,7 @@ import './App.css';
 import InputNumber from './components/forms/InputNumber';
 import Heading from './components/headers/Heading';
 import Reducer from './reducers/Reducer';
+import IntervalReducer from './reducers/IntervalReducer';
 
 const initialState = {
   targetAmount: 0,
@@ -10,8 +11,11 @@ const initialState = {
   progressAmount: 0
 }
 
+let intervalInputState = [];
+
 function App() {
   const [state, dispatch] = useReducer(Reducer, initialState);
+  const [inputState, intervalDispatch] = useReducer(IntervalReducer, intervalInputState);
 
   return (
     <div className="App">
@@ -38,6 +42,20 @@ function App() {
       />
 
       Amount remaining: {state.progressAmount}
+
+     <button onClick={e => intervalDispatch({
+       type: 'add'
+     })}>Create new input</button>
+
+     {
+       inputState.map((intervalInput, index) => {
+         return (
+           <InputNumber
+            key={index}
+           />
+         )
+       })
+     }
 
     </div>
   );
