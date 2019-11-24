@@ -4,5 +4,17 @@ export const
   COUNCIL_TAX_AMOUNT = 'councilTaxAmount',
   MAINTENANCE_AMOUNT = 'maintenanceAmount',
   HOUSEHOLD_BILLS_AMOUNT = 'householdBillsAmount',
-  OTHER_HOUSEHOLD_COSTS_AMOUNT = 'otherHouseholdCostsAmount'
+  OTHER_HOUSEHOLD_COSTS_AMOUNT = 'otherHouseholdCostsAmount',
+  GROCERIES_AMOUNT = 'groceriesAmount',
+  HEALTHCARE_AMOUNT = 'healthcareAmount',
+  OTHER_LIVING_COSTS_AMOUNT = 'otherLivingCostsAmount',
+  HOLIDAYS_AMOUNT = 'holidaysAmount',
+  HOBBIES_AMOUNT = 'hobbiesAmount',
+  ENTERTAINMENT_AMOUNT = 'entertainmentAmount',
+  INSURANCE_AMOUNT = 'insuranceAmount',
+  SAVINGS_AMOUNT = 'savingsAmount',
+  FUEL_AMOUNT = 'fuelAmount',
+  VEHICLE_MAINTENANCE_AMOUNT = 'vehicleMaintenanceAmount',
+  VEHICLE_TAX_AMOUNT = 'vehicleTaxAmount',
+  PUBLIC_TRANSPORT_AMOUNT = 'publicTransportAmount'
 ;

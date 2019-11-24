@@ -12,7 +12,7 @@ export default function HouseholdOutgoings(state, dispatch) {
   return (
     <div>
       <InputNumber
-        name="rentAmount"
+        name={RENT_AMOUNT}
         label="Rent"
         value={state.state.outgoing[RENT_AMOUNT] || '' }
         onChange={e => state.dispatch({
@@ -23,7 +23,7 @@ export default function HouseholdOutgoings(state, dispatch) {
       />
 
       <InputNumber
-        name="councilTaxAmount"
+        name={COUNCIL_TAX_AMOUNT}
         label="Council Tax"
         value={state.state.outgoing[COUNCIL_TAX_AMOUNT] || '' }
         onChange={e => state.dispatch({
@@ -34,7 +34,7 @@ export default function HouseholdOutgoings(state, dispatch) {
       />
 
       <InputNumber
-        name="maintenanceAmount"
+        name={MAINTENANCE_AMOUNT}
         label="Maintenance"
         value={state.state.outgoing[MAINTENANCE_AMOUNT] || '' }
         onChange={e => state.dispatch({
@@ -45,7 +45,7 @@ export default function HouseholdOutgoings(state, dispatch) {
       />
 
       <InputNumber
-        name="householdBillsAmount"
+        name={HOUSEHOLD_BILLS_AMOUNT}
         label="Household bills"
         value={state.state.outgoing[HOUSEHOLD_BILLS_AMOUNT] || '' }
         onChange={e => state.dispatch({
@@ -56,7 +56,7 @@ export default function HouseholdOutgoings(state, dispatch) {
       />
 
       <InputNumber
-        name="otherHouseholdCostsAmount"
+        name={OTHER_HOUSEHOLD_COSTS_AMOUNT}
         label="Other household costs"
         value={state.state.outgoing[OTHER_HOUSEHOLD_COSTS_AMOUNT] || '' }
         onChange={e => state.dispatch({
