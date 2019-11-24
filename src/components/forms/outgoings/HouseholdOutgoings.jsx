@@ -10,7 +10,7 @@ import {
 
 export default function HouseholdOutgoings(state, dispatch) {
   return (
-    <div>
+    <div className="outgoing-fields__container">
       <InputNumber
         name={RENT_AMOUNT}
         label="Rent"

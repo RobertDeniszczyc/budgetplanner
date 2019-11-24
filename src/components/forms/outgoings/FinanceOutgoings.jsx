@@ -7,7 +7,7 @@ import {
 
 export default function FinanceOutgoings(state, dispatch) {
   return (
-    <div>
+    <div className="outgoing-fields__container">
       <InputNumber
         name={INSURANCE_AMOUNT}
         label="Insurance"

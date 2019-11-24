@@ -9,7 +9,7 @@ import {
 
 export default function TravelOutgoings(state, dispatch) {
   return (
-    <div>
+    <div className="outgoing-fields__container">
       <InputNumber
         name={FUEL_AMOUNT}
         label="Fuel"

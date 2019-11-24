@@ -8,7 +8,7 @@ import {
 
 export default function LeisureOutgoings(state, dispatch) {
   return (
-    <div>
+    <div className="outgoing-fields__container">
       <InputNumber
         name={HOLIDAYS_AMOUNT}
         label="Holidays"

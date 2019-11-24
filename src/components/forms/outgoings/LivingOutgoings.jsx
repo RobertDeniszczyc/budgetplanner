@@ -8,7 +8,7 @@ import {
 
 export default function LivingOutgoings(state, dispatch) {
   return (
-    <div>
+    <div className="outgoing-fields__container">
       <InputNumber
         name={GROCERIES_AMOUNT}
         label="Groceries"

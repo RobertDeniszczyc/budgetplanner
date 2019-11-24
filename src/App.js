@@ -74,23 +74,34 @@ function App() {
         })}
       />
 
-      Household
-      <HouseholdOutgoings state={state} dispatch={dispatch} />
+      Amount remaining: <strong>{state[REMAINING_AMOUNT]}</strong>
 
-      Living costs
-      <LivingOutgoings state={state} dispatch={dispatch} />
+      <section className="outgoing-form__wrapper">
+        <div className="outgoing-form__container">
+          <h2 className="outgoing-form__heading">Household</h2>
+          <HouseholdOutgoings state={state} dispatch={dispatch} />
+        </div>
 
-      Leisure
-      <LeisureOutgoings state={state} dispatch={dispatch} />
+        <div className="outgoing-form__container">
+          <h2 className="outgoing-form__heading">Living costs</h2>
+          <LivingOutgoings state={state} dispatch={dispatch} />
+        </div>
 
-      Finance
-      <FinanceOutgoings state={state} dispatch={dispatch} />
 
-      Travel
-      <TravelOutgoings state={state} dispatch={dispatch} />
+        <div className="outgoing-form__container">
+          <h2 className="outgoing-form__heading">Leisure</h2>
+          <LeisureOutgoings state={state} dispatch={dispatch} />
+        </div>
+        <div className="outgoing-form__container">
+        <h2 className="outgoing-form__heading">Finance</h2>
+        <FinanceOutgoings state={state} dispatch={dispatch} />
+        </div>
 
-      Amount remaining: {state[REMAINING_AMOUNT]}
-
+        <div className="outgoing-form__container">
+        <h2 className="outgoing-form__heading">Travel</h2>
+        <TravelOutgoings state={state} dispatch={dispatch} />
+        </div>
+      </section>
     </div>
   );
 }
