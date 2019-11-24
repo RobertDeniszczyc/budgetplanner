@@ -3,7 +3,6 @@ import './App.css';
 import InputNumber from './components/forms/InputNumber';
 import Heading from './components/headers/Heading';
 import Reducer from './reducers/Reducer';
-import IntervalReducer from './reducers/IntervalReducer';
 import {
   INCOME_AMOUNT,
   RENT_AMOUNT,
@@ -55,11 +54,8 @@ const initialState = {
   }
 }
 
-let intervalInputState = [];
-
 function App() {
   const [state, dispatch] = useReducer(Reducer, initialState);
-  const [inputState, intervalDispatch] = useReducer(IntervalReducer, intervalInputState);
 
   return (
     <div className="App">
@@ -92,20 +88,6 @@ function App() {
       <TravelOutgoings state={state} dispatch={dispatch} />
 
       Amount remaining: {state.remainingAmount}
-
-     <button onClick={e => intervalDispatch({
-       type: 'add'
-     })}>Create new input</button>
-
-     {
-       inputState.map((intervalInput, index) => {
-         return (
-           <InputNumber
-            key={index}
-           />
-         )
-       })
-     }
 
     </div>
   );
