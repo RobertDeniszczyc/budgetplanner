@@ -1,6 +1,8 @@
 import OutgoingCalculator from '../components/calculators/OutgoingCalculator';
 import {
-  INCOME_AMOUNT
+  INCOME_AMOUNT,
+  OUTGOING_AMOUNT,
+  REMAINING_AMOUNT
 } from '../config/stateConstants';
 
 export default function Reducer(state, action) {
@@ -9,7 +11,7 @@ export default function Reducer(state, action) {
       return {
         ...state,
         [INCOME_AMOUNT]: action.payload,
-        remainingAmount: action.payload - state.outgoingAmount,
+        [REMAINING_AMOUNT]: action.payload - state[OUTGOING_AMOUNT],
       };
     case 'outgoingAmountChange':
       return {
@@ -18,8 +20,8 @@ export default function Reducer(state, action) {
           ...state.outgoing,
           [action.outgoing]: action.payload
         },
-        outgoingAmount: state.outgoingAmount + action.payload,
-        remainingAmount: state[INCOME_AMOUNT] - OutgoingCalculator(state.outgoing, action.outgoing, action.payload)
+        [OUTGOING_AMOUNT]: state[OUTGOING_AMOUNT] + action.payload,
+        [REMAINING_AMOUNT]: state[INCOME_AMOUNT] - OutgoingCalculator(state.outgoing, action.outgoing, action.payload)
       };
     default:
       console.warn('Unknown action');

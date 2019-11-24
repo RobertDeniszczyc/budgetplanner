@@ -21,7 +21,9 @@ import {
   FUEL_AMOUNT,
   VEHICLE_MAINTENANCE_AMOUNT,
   VEHICLE_TAX_AMOUNT,
-  PUBLIC_TRANSPORT_AMOUNT
+  PUBLIC_TRANSPORT_AMOUNT,
+  OUTGOING_AMOUNT,
+  REMAINING_AMOUNT
 } from './config/stateConstants';
 import HouseholdOutgoings from './components/forms/outgoings/HouseholdOutgoings';
 import LivingOutgoings from './components/forms/outgoings/LivingOutgoings';
@@ -31,8 +33,8 @@ import TravelOutgoings from './components/forms/outgoings/TravelOutgoings';
 
 const initialState = {
   [INCOME_AMOUNT]: 0,
-  outgoingAmount: 0,
-  remainingAmount: 0,
+  [OUTGOING_AMOUNT]: 0,
+  [REMAINING_AMOUNT]: 0,
   outgoing: {
     [RENT_AMOUNT]: 0,
     [COUNCIL_TAX_AMOUNT]: 0,
@@ -87,7 +89,7 @@ function App() {
       Travel
       <TravelOutgoings state={state} dispatch={dispatch} />
 
-      Amount remaining: {state.remainingAmount}
+      Amount remaining: {state[REMAINING_AMOUNT]}
 
     </div>
   );
