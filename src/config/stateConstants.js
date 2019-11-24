@@ -17,6 +17,7 @@ export const
   VEHICLE_MAINTENANCE_AMOUNT = 'vehicleMaintenanceAmount',
   VEHICLE_TAX_AMOUNT = 'vehicleTaxAmount',
   PUBLIC_TRANSPORT_AMOUNT = 'publicTransportAmount',
-  OUTGOING_AMOUNT = 'outgoingAmount',
-  REMAINING_AMOUNT = 'remainingAmount'
+  REMAINING_AMOUNT = 'remainingAmount',
+  ERROR = 'error',
+  OUTGOING = 'outgoing'
 ;

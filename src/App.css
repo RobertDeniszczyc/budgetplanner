@@ -56,3 +56,8 @@
   border: 1px solid #ddd;;
   border-radius: 10px;
 }
+
+.notification--warning {
+  background: #ff534f;
+  color: #fff;
+}

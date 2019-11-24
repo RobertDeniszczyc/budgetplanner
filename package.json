@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.7.4",
+    "copy-to-clipboard": "^3.2.0",
     "electron-is-dev": "^1.1.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -46,11 +48,11 @@
     "wait-on": "^3.3.0"
   },
   "author": {
-  "name": "Robert Deniszczyc",
-  "email": "robert@builtbyrobert.com",
-  "url": "https://builtbyrobert.com"
-},
-"build": {
+    "name": "Robert Deniszczyc",
+    "email": "robert@builtbyrobert.com",
+    "url": "https://builtbyrobert.com"
+  },
+  "build": {
     "appId": "com.builtbyrobert.budgetplanner",
     "productName": "BudgetPlanner",
     "copyright": "Copyright © 2019 ${author}",

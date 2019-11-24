@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import './App.css';
 import InputNumber from './components/forms/InputNumber';
 import Heading from './components/headers/Heading';
@@ -22,8 +22,8 @@ import {
   VEHICLE_MAINTENANCE_AMOUNT,
   VEHICLE_TAX_AMOUNT,
   PUBLIC_TRANSPORT_AMOUNT,
-  OUTGOING_AMOUNT,
-  REMAINING_AMOUNT
+  REMAINING_AMOUNT,
+  ERROR
 } from './config/stateConstants';
 import HouseholdOutgoings from './components/forms/outgoings/HouseholdOutgoings';
 import LivingOutgoings from './components/forms/outgoings/LivingOutgoings';
@@ -31,9 +31,10 @@ import LeisureOutgoings from './components/forms/outgoings/LeisureOutgoings';
 import FinanceOutgoings from './components/forms/outgoings/FinanceOutgoings';
 import TravelOutgoings from './components/forms/outgoings/TravelOutgoings';
 
+import copy from 'copy-to-clipboard';
+
 const initialState = {
   [INCOME_AMOUNT]: 0,
-  [OUTGOING_AMOUNT]: 0,
   [REMAINING_AMOUNT]: 0,
   outgoing: {
     [RENT_AMOUNT]: 0,
@@ -53,11 +54,29 @@ const initialState = {
     [VEHICLE_MAINTENANCE_AMOUNT] : 0,
     [VEHICLE_TAX_AMOUNT] : 0,
     [PUBLIC_TRANSPORT_AMOUNT] : 0
-  }
+  },
+  [ERROR]: ''
 }
 
 function App() {
+
   const [state, dispatch] = useReducer(Reducer, initialState);
+  const [exportableConfig, setExportableConfig] = useState(null);
+  const [importableConfig, setImportableConfig] = useState(null);
+
+  function exportConfiguration(e) {
+    e.preventDefault();
+    setExportableConfig(JSON.stringify(state));
+    copy(JSON.stringify(state));
+  }
+
+  function importConfiguration(e) {
+    e.preventDefault();
+    dispatch({
+      type: 'importConfiguration',
+      payload: importableConfig
+    });
+  }
 
   return (
     <div className="App">
@@ -102,6 +121,30 @@ function App() {
           <TravelOutgoings state={state} dispatch={dispatch} />
         </div>
       </section>
+
+      {state[ERROR] &&
+        <div className="notification--warning">
+          {state[ERROR]}
+        </div>
+      }
+      <label className="" htmlFor="importConfig">Import config</label>
+      <input
+        type="text"
+        onChange={e => setImportableConfig(e.target.value)}
+      />
+      <button
+        onClick={importConfiguration}
+      >
+        Import configuration
+      </button>
+
+      <button
+        onClick={exportConfiguration}
+      >
+        Export and copy to clipboard
+      </button>
+
+      { exportableConfig ? exportableConfig : '' }
     </div>
   );
 }
