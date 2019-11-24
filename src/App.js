@@ -45,7 +45,6 @@ function App() {
         onChange={e => dispatch({
           type: 'incomeAmountChange',
           payload: parseInt(e.target.value),
-          test: true
         })}
       />
 
