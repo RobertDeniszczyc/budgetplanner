@@ -87,19 +87,19 @@ function App() {
           <LivingOutgoings state={state} dispatch={dispatch} />
         </div>
 
-
         <div className="outgoing-form__container">
           <h2 className="outgoing-form__heading">Leisure</h2>
           <LeisureOutgoings state={state} dispatch={dispatch} />
         </div>
+
         <div className="outgoing-form__container">
-        <h2 className="outgoing-form__heading">Finance</h2>
-        <FinanceOutgoings state={state} dispatch={dispatch} />
+          <h2 className="outgoing-form__heading">Finance</h2>
+          <FinanceOutgoings state={state} dispatch={dispatch} />
         </div>
 
         <div className="outgoing-form__container">
-        <h2 className="outgoing-form__heading">Travel</h2>
-        <TravelOutgoings state={state} dispatch={dispatch} />
+          <h2 className="outgoing-form__heading">Travel</h2>
+          <TravelOutgoings state={state} dispatch={dispatch} />
         </div>
       </section>
     </div>

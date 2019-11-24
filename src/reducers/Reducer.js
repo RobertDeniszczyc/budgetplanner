@@ -10,8 +10,11 @@ export default function Reducer(state, action) {
     case 'incomeAmountChange':
       return {
         ...state,
+        outgoing: {
+          ...state.outgoing
+        },
         [INCOME_AMOUNT]: action.payload,
-        [REMAINING_AMOUNT]: action.payload - state[OUTGOING_AMOUNT],
+        [REMAINING_AMOUNT]: action.payload - OutgoingCalculator(state.outgoing),
       };
     case 'outgoingAmountChange':
       return {
@@ -20,7 +23,7 @@ export default function Reducer(state, action) {
           ...state.outgoing,
           [action.outgoing]: action.payload
         },
-        [OUTGOING_AMOUNT]: state[OUTGOING_AMOUNT] + action.payload,
+        [OUTGOING_AMOUNT]: state[OUTGOING_AMOUNT] + OutgoingCalculator(state.outgoing, action.outgoing, action.payload),
         [REMAINING_AMOUNT]: state[INCOME_AMOUNT] - OutgoingCalculator(state.outgoing, action.outgoing, action.payload)
       };
     default:
