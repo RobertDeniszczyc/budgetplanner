@@ -60,4 +60,56 @@
 .notification--warning {
   background: #ff534f;
   color: #fff;
+  padding: 20px;
+  font-weight: 600;
+}
+
+.config__container {
+  margin: 10px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.config__code {
+  background: #333;
+  color: #eee;
+  padding: 10px;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.config__code--input {
+  margin: 5px;
+}
+
+.config__code::selection {
+  background: #eee;
+}
+
+.button {
+  display: inline-block;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button--success {
+  background: #80cf8b;
+}
+
+.button--success:hover {
+  background: #80ee8b;
+}
+
+.button--info {
+  background: #52a5f2;
+}
+
+.button--info:hover {
+  background: #59c1f2;
 }

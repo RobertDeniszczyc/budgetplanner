@@ -72,7 +72,7 @@ export default function Reducer(state, action) {
       } else {
         return {
           ...state,
-          [ERROR]: 'Non valid configuration submitted',
+          [ERROR]: 'Invalid configuration submitted',
         }
       }
     default:

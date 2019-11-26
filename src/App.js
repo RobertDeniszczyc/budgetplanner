@@ -82,18 +82,20 @@ function App() {
     <div className="App">
       <Heading heading="Budget Planner"/>
 
-      Income
-      <InputNumber
-        name={INCOME_AMOUNT}
-        label="Income Amount"
-        value={state[INCOME_AMOUNT] || '' }
-        onChange={e => dispatch({
-          type: 'incomeAmountChange',
-          payload: parseInt(e.target.value)
-        })}
-      />
+      <div className="config__container">
+        <h2>Income</h2>
+        <InputNumber
+          name={INCOME_AMOUNT}
+          label="Income Amount"
+          value={state[INCOME_AMOUNT] || '' }
+          onChange={e => dispatch({
+            type: 'incomeAmountChange',
+            payload: parseInt(e.target.value)
+          })}
+        />
 
-      Amount remaining: <strong>{state[REMAINING_AMOUNT]}</strong>
+        Amount remaining: <strong>{state[REMAINING_AMOUNT]}</strong>
+      </div>
 
       <section className="outgoing-form__wrapper">
         <div className="outgoing-form__container">
@@ -122,29 +124,43 @@ function App() {
         </div>
       </section>
 
-      {state[ERROR] &&
-        <div className="notification--warning">
-          {state[ERROR]}
-        </div>
-      }
-      <label className="" htmlFor="importConfig">Import config</label>
-      <input
-        type="text"
-        onChange={e => setImportableConfig(e.target.value)}
-      />
-      <button
-        onClick={importConfiguration}
-      >
-        Import configuration
-      </button>
-
-      <button
+      <div className="config__container">
+        <h2>Export config</h2>
+        <button
+        className="button button--info"
         onClick={exportConfiguration}
-      >
+        >
         Export and copy to clipboard
-      </button>
+        </button>
 
-      { exportableConfig ? exportableConfig : '' }
+        { exportableConfig &&
+          <pre className="config__code">
+          { exportableConfig }
+          </pre>
+        }
+      </div>
+
+      <div className="config__container">
+        <h2>Import config</h2>
+        {state[ERROR] &&
+          <div className="notification--warning">
+            {state[ERROR]}
+          </div>
+        }
+        <label className="" htmlFor="importConfig">Paste config code:</label>
+        <input
+          type="text"
+          onChange={e => setImportableConfig(e.target.value)}
+          className="config__code config__code--input"
+        />
+        <button
+          className="button button--success"
+          onClick={importConfiguration}
+        >
+          Import configuration
+        </button>
+      </div>
+
     </div>
   );
 }
