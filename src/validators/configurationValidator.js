@@ -18,16 +18,15 @@ import {
   VEHICLE_TAX_AMOUNT,
   PUBLIC_TRANSPORT_AMOUNT,
   REMAINING_AMOUNT,
-  ERROR,
   OUTGOING
 } from '../config/stateConstants';
 
 const validPayloadKeys = [
   INCOME_AMOUNT,
   REMAINING_AMOUNT,
-  OUTGOING,
-  ERROR
+  OUTGOING
 ];
+
 const validOutgoingKeys = [
   RENT_AMOUNT,
   COUNCIL_TAX_AMOUNT,
@@ -76,7 +75,7 @@ export default function importedConfigurationIsValid(payload) {
     };
 
     if (
-      JSON.stringify(Object.keys(payload)) !== JSON.stringify(validPayloadKeys) &&
+      JSON.stringify(Object.keys(payload)) !== JSON.stringify(validPayloadKeys) ||
       JSON.stringify(Object.keys(payload.outgoing)) !== JSON.stringify(validOutgoingKeys)
     ) {
       throw new Error();
