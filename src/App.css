@@ -53,8 +53,13 @@
 .outgoing-input__field {
   margin-top: 5px;
   padding: 10px;
-  border: 1px solid #ddd;;
+  border: 1px solid #ddd;
   border-radius: 10px;
+}
+
+.outgoing-input__field:focus {
+  background: #FDF5ED;
+  outline: none;
 }
 
 .notification--warning {
@@ -102,7 +107,8 @@
   background: #80cf8b;
 }
 
-.button--success:hover {
+.button--success:hover,
+.button--success:focus {
   background: #80ee8b;
 }
 
@@ -110,6 +116,7 @@
   background: #52a5f2;
 }
 
-.button--info:hover {
+.button--info:hover,
+.button--info:focus {
   background: #59c1f2;
 }

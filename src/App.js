@@ -94,7 +94,7 @@ function App() {
           })}
         />
 
-        Amount remaining: <strong>{state[REMAINING_AMOUNT]}</strong>
+        Amount remaining: <strong>{state[REMAINING_AMOUNT] || ''}</strong>
       </div>
 
       <section className="outgoing-form__wrapper">
