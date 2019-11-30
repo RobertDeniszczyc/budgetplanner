@@ -35,13 +35,14 @@ export default function Reducer(state, action) {
         [REMAINING_AMOUNT]: action.payload - OutgoingCalculator(state.outgoing),
       };
     case 'outgoingAmountChange':
+      let payload = isNaN(action.payload) ? 0 : action.payload;
       return {
         ...state,
         outgoing: {
           ...state.outgoing,
-          [action.outgoing]: action.payload
+          [action.outgoing]: payload
         },
-        [REMAINING_AMOUNT]: state[INCOME_AMOUNT] - OutgoingCalculator(state.outgoing, action.outgoing, action.payload)
+        [REMAINING_AMOUNT]: state[INCOME_AMOUNT] - OutgoingCalculator(state.outgoing, action.outgoing, payload)
       };
     case 'importConfiguration':
       if (importedConfigurationIsValid(action.payload)) {
