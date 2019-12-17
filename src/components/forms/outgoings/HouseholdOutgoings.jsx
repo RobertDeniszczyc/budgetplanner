@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import InputNumber from '../InputNumber';
 import {
   RENT_AMOUNT,
@@ -7,10 +7,20 @@ import {
   HOUSEHOLD_BILLS_AMOUNT,
   OTHER_HOUSEHOLD_COSTS_AMOUNT
 } from '../../../config/stateConstants';
+import styled from 'styled-components';
+import { DarkModeContext } from '../../../hooks/DarkModeContext';
+
+const FormContainer = styled.div`
+  color: ${props => (
+      props.darkMode ? "#efefef" : "#111"
+  )};
+`;
 
 export default function HouseholdOutgoings(state, dispatch) {
+  const { darkMode } = useContext(DarkModeContext);
+  
   return (
-    <div className="outgoing-fields__container">
+    <FormContainer darkMode={darkMode}>
       <InputNumber
         name={RENT_AMOUNT}
         label="Rent"
@@ -65,6 +75,6 @@ export default function HouseholdOutgoings(state, dispatch) {
           outgoing: [OTHER_HOUSEHOLD_COSTS_AMOUNT]
         })}
       />
-    </div>
+    </FormContainer>
   )
 }

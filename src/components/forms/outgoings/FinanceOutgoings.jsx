@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import InputNumber from '../InputNumber';
 import {
   INSURANCE_AMOUNT,
   SAVINGS_AMOUNT
 } from '../../../config/stateConstants';
+import styled from 'styled-components';
+import { DarkModeContext } from '../../../hooks/DarkModeContext';
+
+const FormContainer = styled.div`
+  color: ${props => (
+      props.darkMode ? "#efefef" : "#111"
+  )};
+`;
 
 export default function FinanceOutgoings(state, dispatch) {
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
-    <div className="outgoing-fields__container">
+    <FormContainer darkMode={darkMode}>
       <InputNumber
         name={INSURANCE_AMOUNT}
         label="Insurance"
@@ -29,6 +39,6 @@ export default function FinanceOutgoings(state, dispatch) {
           outgoing: [SAVINGS_AMOUNT]
         })}
       />
-    </div>
+    </FormContainer>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import InputNumber from '../InputNumber';
 import {
   FUEL_AMOUNT,
@@ -6,10 +6,20 @@ import {
   VEHICLE_TAX_AMOUNT,
   PUBLIC_TRANSPORT_AMOUNT
 } from '../../../config/stateConstants';
+import styled from 'styled-components';
+import { DarkModeContext } from '../../../hooks/DarkModeContext';
+
+const FormContainer = styled.div`
+  color: ${props => (
+      props.darkMode ? "#efefef" : "#111"
+  )};
+`;
 
 export default function TravelOutgoings(state, dispatch) {
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
-    <div className="outgoing-fields__container">
+    <FormContainer darkMode={darkMode}>
       <InputNumber
         name={FUEL_AMOUNT}
         label="Fuel"
@@ -53,6 +63,6 @@ export default function TravelOutgoings(state, dispatch) {
           outgoing: [PUBLIC_TRANSPORT_AMOUNT]
         })}
       />
-    </div>
+    </FormContainer>
   )
 }

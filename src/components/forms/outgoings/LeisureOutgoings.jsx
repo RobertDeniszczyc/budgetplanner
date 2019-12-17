@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import InputNumber from '../InputNumber';
 import {
   HOLIDAYS_AMOUNT,
   HOBBIES_AMOUNT,
   ENTERTAINMENT_AMOUNT
 } from '../../../config/stateConstants';
+import styled from 'styled-components';
+import { DarkModeContext } from '../../../hooks/DarkModeContext';
+
+const FormContainer = styled.div`
+  color: ${props => (
+      props.darkMode ? "#efefef" : "#111"
+  )};
+`;
 
 export default function LeisureOutgoings(state, dispatch) {
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
-    <div className="outgoing-fields__container">
+    <FormContainer darkMode={darkMode}>
       <InputNumber
         name={HOLIDAYS_AMOUNT}
         label="Holidays"
@@ -41,6 +51,6 @@ export default function LeisureOutgoings(state, dispatch) {
           outgoing: [ENTERTAINMENT_AMOUNT]
         })}
       />
-    </div>
+    </FormContainer>
   )
 }
