@@ -4,6 +4,11 @@ This project is built with Electron, Create React App (CRA), and Electron Builde
 Foundations built from [this tutorial](https://www.codementor.io/randyfindley/how-to-build-an-electron-app-using-create-react-app-and-electron-builder-ss1k0sfer) with some
 modifications in places where the tutorial was out of date or not suitable.
 
+## Features
+- Input income and outgoings, and calculates the amount remaining after outgoings
+- Export/import configurations
+- Dark mode
+
 ## Make it so
 ### Dev mode
 Runs in dev mode. First launches CRA then Electron.
