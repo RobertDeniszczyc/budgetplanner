@@ -100,11 +100,11 @@ export default function Dashboard(props) {
   function exportConfiguration(e) {
     e.preventDefault();
     let exportableState = state;
-    if (exportableState.error) {
+    if (Object.keys(exportableState).includes('error')) {
       delete exportableState.error;
     }
-    setExportableConfig(JSON.stringify(state));
-    copy(JSON.stringify(state));
+    setExportableConfig(JSON.stringify(exportableState));
+    copy(JSON.stringify(exportableState));
   }
 
   function importConfiguration(e) {
