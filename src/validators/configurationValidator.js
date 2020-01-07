@@ -50,29 +50,6 @@ const validOutgoingKeys = [
 export default function importedConfigurationIsValid(payload) {
   try {
     payload = JSON.parse(payload);
-    let config = {
-      [INCOME_AMOUNT]: payload[INCOME_AMOUNT],
-      [REMAINING_AMOUNT]: payload[REMAINING_AMOUNT],
-      outgoing: {
-        [RENT_AMOUNT]: payload.outgoing[RENT_AMOUNT],
-        [COUNCIL_TAX_AMOUNT]: payload.outgoing[COUNCIL_TAX_AMOUNT],
-        [MAINTENANCE_AMOUNT]: payload.outgoing[MAINTENANCE_AMOUNT],
-        [HOUSEHOLD_BILLS_AMOUNT]: payload.outgoing[HOUSEHOLD_BILLS_AMOUNT],
-        [OTHER_HOUSEHOLD_COSTS_AMOUNT]: payload.outgoing[OTHER_HOUSEHOLD_COSTS_AMOUNT],
-        [GROCERIES_AMOUNT] : payload.outgoing[GROCERIES_AMOUNT],
-        [HEALTHCARE_AMOUNT] : payload.outgoing[HEALTHCARE_AMOUNT],
-        [OTHER_LIVING_COSTS_AMOUNT] : payload.outgoing[OTHER_LIVING_COSTS_AMOUNT],
-        [HOLIDAYS_AMOUNT] : payload.outgoing[HOLIDAYS_AMOUNT],
-        [HOBBIES_AMOUNT] : payload.outgoing[HOBBIES_AMOUNT],
-        [ENTERTAINMENT_AMOUNT] : payload.outgoing[ENTERTAINMENT_AMOUNT],
-        [INSURANCE_AMOUNT] : payload.outgoing[INSURANCE_AMOUNT],
-        [SAVINGS_AMOUNT] : payload.outgoing[SAVINGS_AMOUNT],
-        [FUEL_AMOUNT] : payload.outgoing[FUEL_AMOUNT],
-        [VEHICLE_MAINTENANCE_AMOUNT] : payload.outgoing[VEHICLE_MAINTENANCE_AMOUNT],
-        [VEHICLE_TAX_AMOUNT] : payload.outgoing[VEHICLE_TAX_AMOUNT],
-        [PUBLIC_TRANSPORT_AMOUNT] : payload.outgoing[PUBLIC_TRANSPORT_AMOUNT]
-      }
-    };
 
     if (
       JSON.stringify(Object.keys(payload)) !== JSON.stringify(validPayloadKeys) ||
@@ -81,9 +58,7 @@ export default function importedConfigurationIsValid(payload) {
       throw new Error();
     }
 
-    if (config) {
-      return true;
-    }
+    return true;
   } catch(e) {
     return false;
   }
