@@ -18,13 +18,15 @@ import {
   VEHICLE_TAX_AMOUNT,
   PUBLIC_TRANSPORT_AMOUNT,
   REMAINING_AMOUNT,
-  OUTGOING
+  OUTGOING,
+  DARK_MODE
 } from '../config/stateConstants';
 
 const validPayloadKeys = [
   INCOME_AMOUNT,
   REMAINING_AMOUNT,
-  OUTGOING
+  OUTGOING,
+  DARK_MODE
 ];
 
 const validOutgoingKeys = [

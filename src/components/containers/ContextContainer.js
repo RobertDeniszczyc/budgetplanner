@@ -4,8 +4,12 @@ import { DarkModeContext } from '../../hooks/DarkModeContext';
 export default props => {
   const [darkMode, setDarkMode] = useState(false);
 
-  function toggleDarkMode() {
-    setDarkMode(darkMode => !darkMode);
+  function toggleDarkMode(override) {
+    if (typeof(override) === 'boolean') {
+      setDarkMode(override);
+    } else {
+      setDarkMode(darkMode => !darkMode);
+    }
   }
 
   return (

@@ -36,6 +36,7 @@ import copy from 'copy-to-clipboard';
 import DarkModeToggle from './components/themes/DarkModeToggle';
 import styled from 'styled-components';
 import { DarkModeContext } from './hooks/DarkModeContext';
+import importedConfigurationIsValid from './validators/configurationValidator';
 
 const initialState = {
   [INCOME_AMOUNT]: 0,
@@ -92,7 +93,7 @@ const ConfigFormContainer = styled.div`
 
 export default function Dashboard(props) {
 
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   const [state, dispatch] = useReducer(Reducer, initialState);
   const [exportableConfig, setExportableConfig] = useState(null);
   const [importableConfig, setImportableConfig] = useState(null);
@@ -103,18 +104,26 @@ export default function Dashboard(props) {
     if (Object.keys(exportableState).includes('error')) {
       delete exportableState.error;
     }
+    exportableState.darkMode = darkMode;
     setExportableConfig(JSON.stringify(exportableState));
     copy(JSON.stringify(exportableState));
   }
 
   function importConfiguration(e) {
     e.preventDefault();
-    dispatch({
-      type: 'importConfiguration',
-      payload: importableConfig
-    });
+    if (importedConfigurationIsValid(importableConfig)) {
+      let config = JSON.parse(importableConfig);
+      dispatch({
+        type: 'importConfiguration',
+        payload: config
+      });
+      toggleDarkMode(config.darkMode);
+    } else {
+      dispatch({
+        type: 'configurationError',
+      })
+    }
   }
-
 
   return (
     <AppContainer darkMode={darkMode}>

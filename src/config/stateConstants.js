@@ -19,5 +19,6 @@ export const
   PUBLIC_TRANSPORT_AMOUNT = 'publicTransportAmount',
   REMAINING_AMOUNT = 'remainingAmount',
   ERROR = 'error',
-  OUTGOING = 'outgoing'
+  OUTGOING = 'outgoing',
+  DARK_MODE = 'darkMode'
 ;

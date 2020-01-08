@@ -4,11 +4,10 @@ import {
   REMAINING_AMOUNT,
   ERROR
 } from '../config/stateConstants';
-import importedConfigurationIsValid from '../validators/configurationValidator';
 
 export default function Reducer(state, action) {
   switch(action.type) {
-    case 'incomeAmountChange':
+    case 'incomeAmountChange': {
       return {
         ...state,
         outgoing: {
@@ -17,7 +16,8 @@ export default function Reducer(state, action) {
         [INCOME_AMOUNT]: action.payload,
         [REMAINING_AMOUNT]: action.payload - OutgoingCalculator(state.outgoing),
       };
-    case 'outgoingAmountChange':
+    }
+    case 'outgoingAmountChange': {
       let payload = isNaN(action.payload) ? 0 : action.payload;
       return {
         ...state,
@@ -27,17 +27,18 @@ export default function Reducer(state, action) {
         },
         [REMAINING_AMOUNT]: state[INCOME_AMOUNT] - OutgoingCalculator(state.outgoing, action.outgoing, payload)
       };
-    case 'importConfiguration':
-      if (importedConfigurationIsValid(action.payload)) {
-        let payload = JSON.parse(action.payload);
-        return payload;
-      } else {
-        return {
-          ...state,
-          [ERROR]: 'Invalid configuration submitted',
-        }
+    }
+    case 'importConfiguration': {
+        return action.payload;
+    }
+    case 'configurationError': {
+      return {
+        ...state,
+        [ERROR]: 'Invalid configuration submitted',
       }
-    default:
+    }
+    default: {
       console.warn('Unknown action');
+    }
   }
 }
