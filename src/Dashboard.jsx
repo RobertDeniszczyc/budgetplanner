@@ -141,7 +141,7 @@ export default function Dashboard(props) {
           })}
         />
 
-        Amount remaining: <strong>{state[REMAINING_AMOUNT] || ''}</strong>
+        Amount remaining: <strong>{state[REMAINING_AMOUNT] || 0}</strong>
       </ConfigFormContainer>
 
       <section className="outgoing-form__wrapper">
