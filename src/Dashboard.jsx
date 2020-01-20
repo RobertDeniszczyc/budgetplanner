@@ -111,7 +111,9 @@ export default function Dashboard(props) {
 
   function importConfiguration(e) {
     e.preventDefault();
-    if (importedConfigurationIsValid(importableConfig)) {
+
+    let validateImportConfig = importedConfigurationIsValid(importableConfig);
+    if (validateImportConfig.response === true) {
       let config = JSON.parse(importableConfig);
       dispatch({
         type: 'importConfiguration',
@@ -121,6 +123,7 @@ export default function Dashboard(props) {
     } else {
       dispatch({
         type: 'configurationError',
+        payload: validateImportConfig.error
       })
     }
   }

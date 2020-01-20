@@ -23,10 +23,11 @@ test('it returns true with valid input', () => {
       "vehicleMaintenanceAmount" : 1,
       "vehicleTaxAmount" : 1,
       "publicTransportAmount" : 1
-    }
+    },
+    "darkMode": true
   }`;
 
-  let result = importedConfigurationIsValid(payload);
+  let result = importedConfigurationIsValid(payload).response;
   let expected = true;
 
   expect(result).toBe(expected);
@@ -55,10 +56,11 @@ test('it returns false with invalid key', () => {
       "vehicleMaintenanceAmount" : 1,
       "vehicleTaxAmount" : 1,
       "publicTransportAmount" : 1
-    }
+    },
+    "darkMode": true
   }`;
 
-  let result = importedConfigurationIsValid(payload);
+  let result = importedConfigurationIsValid(payload).response;
   let expected = false;
 
   expect(result).toBe(expected);
@@ -87,10 +89,11 @@ test('it returns false with invalid nested key', () => {
       "vehicleMaintenanceAmount" : 1,
       "vehicleTaxAmount" : 1,
       "publicTransportAmount" : 1
-    }
+    },
+    "darkMode": true
   }`;
 
-  let result = importedConfigurationIsValid(payload);
+  let result = importedConfigurationIsValid(payload).response;
   let expected = false;
 
   expect(result).toBe(expected);
@@ -119,10 +122,11 @@ test('it returns false with non integer value', () => {
       "vehicleMaintenanceAmount" : 1,
       "vehicleTaxAmount" : 1,
       "publicTransportAmount" : 1
-    }
+    },
+    "darkMode": true
   }`;
 
-  let result = importedConfigurationIsValid(payload);
+  let result = importedConfigurationIsValid(payload).response;
   let expected = false;
 
   expect(result).toBe(expected);

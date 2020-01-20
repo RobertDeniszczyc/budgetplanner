@@ -34,7 +34,7 @@ export default function Reducer(state, action) {
     case 'configurationError': {
       return {
         ...state,
-        [ERROR]: 'Invalid configuration submitted',
+        [ERROR]: action.payload,
       }
     }
     default: {

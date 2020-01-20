@@ -21,6 +21,7 @@ import {
   OUTGOING,
   DARK_MODE
 } from '../config/stateConstants';
+import ConfigurationReducer, { CONFIG_VALID_JSON, CONFIG_VALID_KEYS } from '../reducers/ConfigurationReducer';
 
 const validPayloadKeys = [
   INCOME_AMOUNT,
@@ -49,19 +50,72 @@ const validOutgoingKeys = [
   PUBLIC_TRANSPORT_AMOUNT
 ];
 
+const initialState = {
+  response: 'testestset',
+  error: null,
+  payload: null,
+  breakValidation: false
+}
+
+/**
+ * Check the configuration to import is valid configuration.
+ * Runs through ruleset.
+ * @param {object} payload 
+ * @returns {object}
+ */
 export default function importedConfigurationIsValid(payload) {
-  try {
-    payload = JSON.parse(payload);
 
-    if (
-      JSON.stringify(Object.keys(payload)) !== JSON.stringify(validPayloadKeys) ||
-      JSON.stringify(Object.keys(payload.outgoing)) !== JSON.stringify(validOutgoingKeys)
-    ) {
-      throw new Error();
+  let checksToPerform = [CONFIG_VALID_JSON, CONFIG_VALID_KEYS];
+  let state = initialState;
+
+  checksToPerform.forEach((check) => {
+    if (!state.breakValidation) {
+      state = ConfigurationReducer(state, check, payload);
     }
+  })
 
-    return true;
-  } catch(e) {
-    return false;
+  return state;
+}
+
+/**
+ * Check the supplied payload is valid JSON
+ * @param {object} payload 
+ * @returns {object}
+ */
+export function payloadIsValidJson(payload) {
+  try {
+    JSON.parse(payload);
+  } catch (error) {
+    return {
+      response: false,
+      error: 'Payload is invalid JSON.'
+    };
   }
+
+  return {
+    response: true
+  };
+}
+
+/**
+ * Check the supplied payload keys against the allowed configuration definition
+ * @param {object} payload 
+ * @returns {object}
+ */
+export function payloadHasValidKeys(payload) {
+  let jsonPayload = JSON.parse(payload);
+
+  if (
+    JSON.stringify(Object.keys(jsonPayload)) === JSON.stringify(validPayloadKeys) &&
+    JSON.stringify(Object.keys(jsonPayload.outgoing)) === JSON.stringify(validOutgoingKeys)
+  ) {
+    return {
+      response: true
+    };
+  } 
+
+  return {
+    response: false,
+    error: 'Payload has invalid keys.'
+  };      
 }
